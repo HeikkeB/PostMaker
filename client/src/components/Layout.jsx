@@ -1,5 +1,13 @@
+import NavBar from './NavBar'
 import React from 'react'
 
-export default function Layout() {
-  return <div>Layout</div>
+export default function Layout({ children }) {
+  return (
+    <>
+      <div className="container mx-auto">
+        <NavBar />
+        {children}
+      </div>
+    </>
+  )
 }
