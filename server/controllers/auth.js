@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 //Register user
 export const register = async (req, res) => {
   try {
@@ -41,6 +42,24 @@ export const login = async (req, res) => {
         message: "This user doesn't exist",
       })
     }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+    if (!isPasswordCorrect) {
+      return res.json({
+        message: 'Invalid password',
+      })
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '30d',
+    })
+
+    res.json({
+      token,
+      user,
+      message: 'You are logged in',
+    })
   } catch (error) {
     res.json({ message: `Errors: ${error}` })
   }
@@ -49,5 +68,23 @@ export const login = async (req, res) => {
 //Get Me
 export const getMe = async (req, res) => {
   try {
-  } catch (error) {}
+    const user = await User.findById(req.userId)
+
+    if (!user) {
+      return res.json({
+        message: "This user doesn't exist",
+      })
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '30d',
+    })
+
+    res.json({
+      user,
+      token,
+    })
+  } catch (error) {
+    res.json({ message: 'No access' })
+  }
 }
