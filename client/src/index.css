@@ -21,3 +21,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+nav .active {
+  color: white;
+}
