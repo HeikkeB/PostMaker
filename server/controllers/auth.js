@@ -9,7 +9,7 @@ export const register = async (req, res) => {
 
     if (isUsed) {
       return res.json({
-        message: 'This username is taken',
+        message: `There is already a ${username} with the same name`,
       })
     }
 
@@ -39,7 +39,7 @@ export const login = async (req, res) => {
     const user = await User.findOne({ username })
     if (!user) {
       return res.json({
-        message: "This user doesn't exist",
+        message: `${username} not found`,
       })
     }
 
