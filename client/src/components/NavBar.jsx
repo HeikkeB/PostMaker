@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, Routes, Route } from 'react-router-dom'
 
 export default function NavBar() {
   const isAuth = false
@@ -36,7 +36,11 @@ export default function NavBar() {
       )}
 
       <div className="flex justify-center items-center  text-xs text-white rounded-sm bg-gray-600 px-4 py-1">
-        {isAuth ? <button>Exit</button> : <Link to="/login">Login</Link>}
+        <Routes>
+          <Route path="*" element={<Link to="/login">Sign-out</Link>} />
+          <Route path="/login" element={<Link to="/register">Sign-up</Link>} />
+          <Route path="/register" element={<Link to="/login">Sign-in</Link>} />
+        </Routes>
       </div>
     </nav>
   )
