@@ -1,7 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, Routes, Route } from 'react-router-dom'
+import { checkAuth, logOut } from '../redux/features/auth/authSlice'
+import { toast } from 'react-toastify'
 
 export default function NavBar() {
-  const isAuth = false
+  const isAuth = useSelector(checkAuth)
+
+  const dispatch = useDispatch()
+
+  const logOutHandler = () => {
+    dispatch(logOut())
+    window.localStorage.removeItem('token')
+    toast.error(`You're logged out`)
+  }
 
   return (
     <nav className="flex py-4 justify-between items-center">
@@ -36,7 +47,14 @@ export default function NavBar() {
 
       <div className="flex justify-center items-center  text-xs text-white rounded-sm bg-gray-600 px-4 py-1">
         <Routes>
-          <Route path="*" element={<Link to="/login">Sign-out</Link>} />
+          <Route
+            path="*"
+            element={
+              <Link onClick={logOutHandler} to="/login">
+                Sign-out
+              </Link>
+            }
+          />
           <Route path="/login" element={<Link to="/register">Sign-up</Link>} />
           <Route path="/register" element={<Link to="/login">Sign-in</Link>} />
         </Routes>
