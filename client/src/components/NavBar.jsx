@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link, NavLink, Routes, Route } from 'react-router-dom'
 
 export default function NavBar() {
