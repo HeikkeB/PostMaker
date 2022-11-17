@@ -55,7 +55,7 @@ export default function AddPostPage() {
           />
         </label>
         <div className="flex object-cover py-6">
-          {image && <img src={URL.createObjectURL(image)} alt="image" />}
+          {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
         </div>
 
         <label className="text-xs text-white opacity-70">

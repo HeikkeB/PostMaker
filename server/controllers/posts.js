@@ -47,3 +47,18 @@ export const createPost = async (req, res) => {
     console.log(error)
   }
 }
+
+export const getAll = async (req, res) => {
+  try {
+    const posts = await Post.find().sort('-createdAt')
+    const popularPosts = await Post.find().limit(6).sort('-views')
+
+    if (!posts) {
+      return res.json({ message: 'Not Posts' })
+    }
+
+    res.json({ posts, popularPosts })
+  } catch (error) {
+    res.json({ message: 'Something went wrong!' })
+  }
+}

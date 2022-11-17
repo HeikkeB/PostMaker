@@ -18,6 +18,7 @@ export default function LoginPage() {
     }
     if (isAuth) {
       navigate('/')
+      toast.success(`You're logged in`)
     }
   }, [status, isAuth, navigate])
 
@@ -26,6 +27,7 @@ export default function LoginPage() {
       dispatch(loginUser({ username, password }))
     } catch (error) {
       console.log(error)
+      toast.error('Something went wrong!')
     }
   }
 
