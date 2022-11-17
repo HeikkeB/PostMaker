@@ -36,29 +36,52 @@ export const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {},
-  extraReducers: {
-    [createPost.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(createPost.pending, (state) => {
       state.loading = true
-    },
-    [createPost.fulfilled]: (state, action) => {
+    })
+    builder.addCase(createPost.fulfilled, (state, action) => {
       state.loading = false
       state.posts.push(action.payload)
-    },
-    [createPost.rejected]: (state) => {
+    })
+    builder.addCase(createPost.rejected, (state) => {
       state.loading = false
-    },
-    [getAllPosts.pending]: (state) => {
+    })
+    builder.addCase(getAllPosts.pending, (state) => {
       state.loading = true
-    },
-    [getAllPosts.fulfilled]: (state, action) => {
+    })
+    builder.addCase(getAllPosts.fulfilled, (state, action) => {
       state.loading = false
       state.posts = action.payload.posts
       state.popularPosts = action.payload.popularPosts
-    },
-    [getAllPosts.rejected]: (state) => {
+    })
+    builder.addCase(getAllPosts.rejected, (state) => {
       state.loading = false
-    },
+    })
   },
+  // extraReducers: {
+  //   [createPost.pending]: (state) => {
+  //     state.loading = true
+  //   },
+  //   [createPost.fulfilled]: (state, action) => {
+  //     state.loading = false
+  //     state.posts.push(action.payload)
+  //   },
+  //   [createPost.rejected]: (state) => {
+  //     state.loading = false
+  //   },
+  //   [getAllPosts.pending]: (state) => {
+  //     state.loading = true
+  //   },
+  //   [getAllPosts.fulfilled]: (state, action) => {
+  //     state.loading = false
+  //     state.posts = action.payload.posts
+  //     state.popularPosts = action.payload.popularPosts
+  //   },
+  //   [getAllPosts.rejected]: (state) => {
+  //     state.loading = false
+  //   },
+  //  },
 })
 
 export default postSlice.reducer

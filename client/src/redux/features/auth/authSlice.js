@@ -65,6 +65,51 @@ export const authSlice = createSlice({
       state.status = null
     },
   },
+
+  // extraReducers: (builder) => {
+  //   builder.addCase(registerUser.pending, (state) => {
+  //     state.isLoading = true
+  //     state.status = null
+  //   })
+  //   builder.addCase(registerUser.fulfilled, (state, action) => {
+  //     state.isLoading = false
+  //     state.status = action.payload.message
+  //     state.user = action.payload.user
+  //     state.token = action.payload.token
+  //   })
+  //   builder.addCase(registerUser.rejected, (state, action) => {
+  //     state.status = action.payload.message
+  //     state.isLoading = false
+  //   })
+  //   builder.addCase(loginUser.pending, (state) => {
+  //     state.isLoading = true
+  //     state.status = null
+  //   })
+  //   builder.addCase(loginUser.fulfilled, (state, action) => {
+  //     state.isLoading = false
+  //     state.status = action.payload.message
+  //     state.user = action.payload.user
+  //     state.token = action.payload.token
+  //   })
+  //   builder.addCase(loginUser.rejected, (state, action) => {
+  //     state.status = action.payload.message
+  //     state.isLoading = false
+  //   })
+  //   builder.addCase(getMe.pending, (state) => {
+  //     state.isLoading = true
+  //     state.status = null
+  //   })
+  //   builder.addCase(getMe.fulfilled, (state, action) => {
+  //     state.isLoading = false
+  //     state.status = null
+  //     state.user = action.payload?.user
+  //     state.token = action.payload?.token
+  //   })
+  //   builder.addCase(getMe.rejected, (state, action) => {
+  //     state.status = action.payload.message
+  //     state.isLoading = false
+  //   })
+
   extraReducers: {
     //Registration
     [registerUser.pending]: (state) => {
