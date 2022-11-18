@@ -1,4 +1,6 @@
-#MERN stack
+# MERN stack
+
+## USED TECHOLOGY
 
 ![https://img.shields.io/badge/-Mongo%20DB-brightgreen](https://img.shields.io/badge/-Mongo%20DB-brightgreen)
 ![https://img.shields.io/badge/-Express-important](https://img.shields.io/badge/-Express-important)
