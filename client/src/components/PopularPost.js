@@ -8,6 +8,7 @@ export default function PopularPost() {
 Post popular
 </div>
   </div>
+  {/* <di></di> */}
 //<div className='flex flex-col basis-1/4 flex-grow mt-4'>
 //     <div>Image</div>
 //     <div className='flex justify-between items-center pt-2'>
