@@ -8,7 +8,7 @@ export default function PostItem({post}) {
   </div>
   }
   return <div className='flex flex-col basis-1/4 flex-grow mt-4'>
-    <div>Image</div>
+    <div>IMAGE</div>
     <div className='flex justify-between items-center pt-2'>
       <div className='text-xs text-white opacity-50'>{post.username}</div>
       <div className='text-xs text-white opacity-50'>{post.createdAt}</div>
