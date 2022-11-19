@@ -1,14 +1,13 @@
 import React from 'react'
 import {AiFillEye, AiOutlineMessage} from 'react-icons/ai'
 
-export default function PopularPost() {
+export default function PopularPost({post}) {
 
   return <div className='bg-gray-600 my-1 rounded-lg'>
 <div className='flex text-xs py-2 px-2 text-gray-300 hover:bg-gray-800 hover:text-white'>
-Post popular
+{post.title}
 </div>
   </div>
-  {/* <di></di> */}
 //<div className='flex flex-col basis-1/4 flex-grow mt-4'>
 //     <div>Image</div>
 //     <div className='flex justify-between items-center pt-2'>
