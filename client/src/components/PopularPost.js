@@ -1,5 +1,4 @@
 import React from 'react'
-import {AiFillEye, AiOutlineMessage} from 'react-icons/ai'
 
 export default function PopularPost({post}) {
 
