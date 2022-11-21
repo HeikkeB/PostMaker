@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 
+
 import PopularPost from '../components/PopularPost'
 import PostItem from '../components/PostItem'
 import { getAllPosts } from '../redux/features/post/postSlice'
@@ -28,7 +29,10 @@ export default function MainPage() {
     <div className="max-w-[1080px] mx-auto py-10">
       <div className="flex justify-between gap-10">
         <div className="flex flex-col gap-10 basis-3/5 text-xs uppercase">
-          <PostItem />
+        {
+
+          posts?.map((post, index) => (<PostItem key={index} post={post} />))
+        }
          
         </div>
         <div className="basis-2/5">
