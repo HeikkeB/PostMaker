@@ -44,11 +44,13 @@ useEffect(() => {
     <div className='text-white text-xl'>{post.title}</div>
     <p className='text-white opacity-40 text-xs pt-4'>{post.text}</p>
 
-    <div className='flex gap-3 items-center mt-2'>
-      <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'>
+    <div className='flex gap-3 items-center mt-2 justify-between'>
+     <div>
+     <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'>
         <AiFillEye /> <span>{post.views}</span>
       </button>
       <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button>
+     </div>
     </div>
       </div>
 

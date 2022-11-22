@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createPost, getAll, getById, getMyPosts } from '../controllers/posts.js'
+import { createPost, getAll, getById, getMyPosts, removeMyPost } from '../controllers/posts.js'
 import { checkAuth } from '../utils/checkAuth.js'
 
 const router = new Router()
@@ -12,6 +12,8 @@ router.get('/', getAll)
 router.get('/:id', getById)
 //get my posts
 router.get('/user/me', checkAuth, getMyPosts)
+//delete my post
+router.delete('/:id', checkAuth, removeMyPost)
 
 
 export default router
