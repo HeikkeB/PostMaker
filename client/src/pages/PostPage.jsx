@@ -1,12 +1,28 @@
 import { useCallback, useState, useEffect } from 'react'
-import {AiFillEye, AiOutlineMessage} from 'react-icons/ai'
+import {AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiFillDelete} from 'react-icons/ai'
 import Moment from 'react-moment'
 import axios from '../utils/axios'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {removePost} from '../redux/features/post/postSlice'
+import { toast } from 'react-toastify'
 
 export default function PostPage() {
   const [post, setPost] = useState(null)
+  const {user} = useSelector((state) => state.auth)
   const params = useParams()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+const handleRemovePost = () => {
+  try {
+    dispatch(removePost(params.id))   
+    toast.error('Post has been deleted')
+    navigate('/')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   const fetchPost = useCallback(async() => {
     const {data} = await axios.get(`/posts/${params.id}`)
     setPost(data)
@@ -44,13 +60,25 @@ useEffect(() => {
     <div className='text-white text-xl'>{post.title}</div>
     <p className='text-white opacity-40 text-xs pt-4'>{post.text}</p>
 
-    <div className='flex gap-3 items-center mt-2 justify-between'>
-     <div>
-     <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'>
+
+    <div className='flex gap-3 items-center mt-4 justify-between'>
+     <div className='flex gap-3'>
+     <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'>
         <AiFillEye /> <span>{post.views}</span>
       </button>
-      <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button>
+      <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button>
      </div>
+     {
+  user?._id === post.author && ( 
+     <div className='flex gap-3'>
+     <button className='flex items-center justify-center gap-2 text-[16px] opacity-50'>
+        <AiTwotoneEdit />
+      </button>
+      <button onClick={handleRemovePost} className='flex items-center justify-center gap-2 text-[16px] opacity-50'><AiFillDelete /></button>
+     </div> 
+  )
+}
+     
     </div>
       </div>
 
