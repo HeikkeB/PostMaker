@@ -14,7 +14,7 @@ export default function PostItem({post}) {
     <div className={
       post.imgUrl ? 'flex rounded-sm h-80' : 'flex rounded-sm'
     }>{
-      post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full' />)
+      post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-lg' />)
     }</div>
     <div className='flex justify-between items-center pt-2'>
       <div className='text-xs text-white opacity-50 mb-1'>{post.username}</div>

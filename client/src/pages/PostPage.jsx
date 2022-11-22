@@ -42,12 +42,12 @@ useEffect(() => {
     <button className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-1 px-4 mt-3'><Link to={'/'}>BACK</Link></button>
 
     <div className='flex gap-10 py-8'>
-      <div className='w-2/3'>
+      <div className='w-2/3 '>
         <div className='flex flex-col basis-1/4 flex-grow'>
         <div className={
-      post?.imgUrl ? 'flex rounded-sm h-80' : 'flex rounded-sm'
+      post?.imgUrl ? 'flex h-80' : 'flex rounded-sm'
     }>{
-      post?.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full' />)
+      post?.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-lg' />)
     }</div>
         </div>
         <div className='flex justify-between items-center pt-2'>
