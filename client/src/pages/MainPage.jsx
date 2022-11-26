@@ -1,8 +1,6 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-
-
-
+import { Link } from 'react-router-dom'
 import PopularPost from '../components/PopularPost'
 import PostItem from '../components/PostItem'
 import { getAllPosts } from '../redux/features/post/postSlice'
@@ -39,9 +37,11 @@ export default function MainPage() {
           <div className="text-xs uppercase text-white">POPULAR POSTS:</div>
 
           {
-            popularPosts?.map((post, index) => {
+            popularPosts?.map((post, index) => (
+              <Link to={`/${post._id}`}>
               <PopularPost key={index}  post={post} />
-            })
+              </Link>
+            ))
           }
         </div>
       </div>

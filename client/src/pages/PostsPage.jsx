@@ -4,18 +4,18 @@ import axios from '../utils/axios'
 
 export default function PostsPage() {
   const [posts, setPosts] = useState([])
-  const fetchMyPosts = async () => {
-    try {
-      const {data} = await axios.get('/posts/user/me')
-      setPosts(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
   
   useEffect(() => {
+    const fetchMyPosts = async () => {
+      try {
+        const {data} = await axios.get('/posts/user/me')
+        setPosts(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     fetchMyPosts()
-  }, [fetchMyPosts])
+  }, [posts])
 
 
   return <div className='w-1/2 mx-auto py-10 flex flex-col gap-10'>
