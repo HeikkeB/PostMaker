@@ -15,7 +15,7 @@ export default function PostsPage() {
   
   useEffect(() => {
     fetchMyPosts()
-  }, [])
+  }, [fetchMyPosts])
 
 
   return <div className='w-1/2 mx-auto py-10 flex flex-col gap-10'>

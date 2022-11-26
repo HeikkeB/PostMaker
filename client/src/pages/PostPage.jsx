@@ -72,7 +72,7 @@ useEffect(() => {
   user?._id === post.author && ( 
      <div className='flex gap-3'>
      <button className='flex items-center justify-center gap-2 text-[16px] opacity-50'>
-        <AiTwotoneEdit />
+        <Link to={`/${params.id}/edit`}><AiTwotoneEdit /></Link>
       </button>
       <button onClick={handleRemovePost} className='flex items-center justify-center gap-2 text-[16px] opacity-50'><AiFillDelete /></button>
      </div> 
