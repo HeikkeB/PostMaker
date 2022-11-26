@@ -25,8 +25,10 @@ export default function MainPage() {
 
   return (
     <div className="max-w-[1080px] mx-auto py-10">
-      <div className="flex justify-between gap-10">
+      <div className="flex justify-between gap-14">
+      
         <div className="flex flex-col gap-10 basis-3/5 text-xs uppercase">
+        
         {
 
           posts?.map((post, index) => (<PostItem key={index} post={post} />))
