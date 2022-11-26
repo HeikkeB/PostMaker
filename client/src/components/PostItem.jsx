@@ -24,7 +24,7 @@ export default function PostItem({post}) {
       </div> 
     </div>
     <div className='text-white text-xl'>{post.title}</div>
-    <p className='text-white opacity-40 text-xs pt-4'>{post.text}</p>
+    <p className='text-white opacity-40 text-xs pt-4 line-clamp-6'>{post.text}</p>
 
     <div className='flex gap-3 items-center mt-2'>
       <button className='flex items-center justify-center gap-2 text-xs text-white opacity-50'>
