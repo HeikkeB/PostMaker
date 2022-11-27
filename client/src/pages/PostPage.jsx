@@ -6,12 +6,14 @@ import {Link, useNavigate, useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {removePost} from '../redux/features/post/postSlice'
 import { toast } from 'react-toastify'
-import { createComment } from '../redux/features/comment/commentSlice'
+import { createComment, getPostComments } from '../redux/features/comment/commentSlice'
+import CommentItem from '../components/CommentItem'
 
 export default function PostPage() {
   const [post, setPost] = useState(null)
   const [comment, setComment] = useState('')
   const {user} = useSelector((state) => state.auth)
+  const { comments } = useSelector((state) => state.comment) 
   const params = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -43,6 +45,18 @@ const handleSubmit = () => {
     console.log(error)
   }
 }
+
+const fetchComments = useCallback( async () => {
+    try {
+      dispatch(getPostComments(params.id))
+    } catch (error) {
+      console.log(error)
+    }
+  }, [dispatch, params.id])
+
+useEffect(() => {
+fetchComments()
+}, [fetchComments])
 
   if(!post) {
     return  <div className='text-xl text-center text-white py-10'>
@@ -105,6 +119,11 @@ const handleSubmit = () => {
         />
         <button type='submit' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px]'>SUBMIT</button>
       </form>
+      {
+        comments?.map((cmt) => (
+         <CommentItem key={cmt._id} cmt={cmt} />
+        ))
+      }
       </div>
     </div>
   </div>
