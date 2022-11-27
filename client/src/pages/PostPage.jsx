@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect } from 'react'
-import {AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiFillDelete} from 'react-icons/ai'
+import {AiFillEye, AiTwotoneEdit, AiFillDelete} from 'react-icons/ai'
 import Moment from 'react-moment'
 import axios from '../utils/axios'
 import {Link, useNavigate, useParams} from 'react-router-dom'
@@ -92,7 +92,7 @@ fetchComments()
      <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'>
         <AiFillEye /> <span>{post.views}</span>
       </button>
-      <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button>
+      {/* <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button> */}
      </div>
      {
   user?._id === post.author && ( 
@@ -108,7 +108,7 @@ fetchComments()
     </div>
       </div>
 
-      <div className='w-1/3 p-8 bg-gray-700 flex flex-col gap-2 rounded-lg'>
+      <div className='w-1/3 p-8 bg-gray-700 flex flex-col gap-4 rounded-lg'>
       <form className='flex gap-3' onSubmit={e => e.preventDefault()}>
         <input 
           type='text'

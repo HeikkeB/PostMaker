@@ -1,15 +1,14 @@
-import React from 'react'
+import Moment from 'react-moment'
 
 export default function CommentItem({cmt}) {
 
-  // const avatar = cmt.trim().toUpperCase().split('').slice(0, 2)
-
   return (
-    <div className='flex items-center gap-3'>
-      <div className='flex items-center justify-center shrink-0 rounded-full w-10 h-10 bg-blue-300 text-sm'>
-        AV
+    <div className='flex items-center justify-between'>
+      <div className='flex text-gray-300 text-[14px]'>{cmt.comment}</div>
+     <div className='text-[9px] text-white opacity-50 flex gap-1'>
+        <div> <Moment date={cmt.createdAt} format='HH:mm' /></div>
+        <div> <Moment date={cmt.createdAt} format='DD-MMM-YY' /></div>
       </div>
-      <div className='flex text-gray-300 rext-[10px]'>{cmt.comment}</div>
     </div>
   )
 }

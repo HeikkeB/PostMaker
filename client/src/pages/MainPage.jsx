@@ -31,7 +31,7 @@ export default function MainPage() {
         
         {
 
-          posts?.map((post, index) => (<PostItem key={index} post={post} />))
+          posts?.map((post) => (<PostItem key={post.id} post={post} />))
         }
          
         </div>
@@ -39,9 +39,9 @@ export default function MainPage() {
           <div className="text-xs uppercase text-white">POPULAR POSTS:</div>
 
           {
-            popularPosts?.map((post, index) => (
+            popularPosts?.map((post) => (
               <Link to={`/${post._id}`}>
-              <PopularPost key={index}  post={post} />
+              <PopularPost key={post.id}  post={post} />
               </Link>
             ))
           }
