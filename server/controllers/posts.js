@@ -7,14 +7,12 @@ import { fileURLToPath } from 'url'
 export const createPost = async (req, res) => {
   try {
     const { title, text } = req.body
-    const user = await User.findById(req.userId)
-
+    const user = await User.findById(req.userId)    
     if (req.files) {
       let fileName = Date.now().toString() + req.files.image.name
       const __dirname = dirname(fileURLToPath(import.meta.url))
       req.files.image.mv(path.join(__dirname, '..', 'uploads', fileName))
-
-      const newPostWithImage = new Post({
+      const newPostWithImage = new Post({ 
         username: user.username,
         title,
         text,
@@ -53,7 +51,6 @@ export const getAll = async (req, res) => {
   try {
     const posts = await Post.find().sort('-createdAt')
     const popularPosts = await Post.find().limit(6).sort('-views')
-
     if (!posts) {
       return res.json({ message: 'Not Posts' })
     }

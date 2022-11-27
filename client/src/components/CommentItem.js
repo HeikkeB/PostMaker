@@ -1,10 +1,13 @@
 import React from 'react'
 
 export default function CommentItem({cmt}) {
+
+  // const avatar = cmt.trim().toUpperCase().split('').slice(0, 2)
+
   return (
     <div className='flex items-center gap-3'>
       <div className='flex items-center justify-center shrink-0 rounded-full w-10 h-10 bg-blue-300 text-sm'>
-        AVATAR
+        AV
       </div>
       <div className='flex text-gray-300 rext-[10px]'>{cmt.comment}</div>
     </div>
