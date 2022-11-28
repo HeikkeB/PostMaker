@@ -37,7 +37,7 @@ async function start() {
     await mongoose.connect(
       `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.p8tssia.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
     )
-
+    app.use(express.static('/client/build'))
     app.listen(PORT, () => console.log(`server started on port: ${PORT}`))
   } catch (err) {
     console.log(err)
