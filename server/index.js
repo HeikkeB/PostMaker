@@ -24,11 +24,11 @@ app.use(express.json())
 app.use(express.static('uploads'))
 
 //Routes
-app.use('/api/auth', authRoute)
-app.use('/api/posts', postRoute)
-app.use('/api/comments', commentRoute)
+app.use('/auth', authRoute)
+app.use('/posts', postRoute)
+app.use('/comments', commentRoute)
 app.use('/', ((req, res) => {
-  res.redirect( '/api/auth/me')
+  res.redirect( '/auth/me')
 }))
 
 

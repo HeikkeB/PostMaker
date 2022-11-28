@@ -29,7 +29,7 @@ function App() {
         <Route path="new" element={<AddPostPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path='*' element={checkAuth ? <Navigate to='/' /> : <Navigate to='login' />} />
+        <Route path='*' element={checkAuth ? <Navigate to='/' /> : <Navigate to='/login' />} />
       </Routes>
 
       <ToastContainer
