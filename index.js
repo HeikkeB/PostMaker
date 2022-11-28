@@ -3,12 +3,19 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import fileUpload from 'express-fileupload'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import authRoute from './routes/auth.js'
 import postRoute from './routes/posts.js'
 import commentRoute from './routes/comments.js'
 
+
 const app = express()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, 'client/build')))
+
 dotenv.config()
 
 //Constants
@@ -37,7 +44,7 @@ async function start() {
     await mongoose.connect(
       `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.p8tssia.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
     )
-    app.use(express.static('/client/build'))
+
     app.listen(PORT, () => console.log(`server started on port: ${PORT}`))
   } catch (err) {
     console.log(err)
