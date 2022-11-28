@@ -22,7 +22,7 @@ const handleRemovePost = () => {
   try {
     dispatch(removePost(params.id))   
     toast.error('Post has been deleted')
-    navigate('/')
+    navigate('/posts')
   } catch (error) {
     console.log(error)
   }
@@ -118,7 +118,7 @@ fetchComments()
           placeholder='Comment'
           className='text-black w-full rounded-lg bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700'
         />
-        <button type='submit' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px]'>SUBMIT</button>
+        <button type='button' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px]'>SUBMIT</button>
       </form>
       {
         comments?.map((cmt) => (

@@ -29,21 +29,17 @@ export default function MainPage() {
       <div className="max-w-[1080px] mx-auto py-10">
         <div className="flex justify-between gap-14">
         
-          <div className="flex flex-col gap-10 basis-3/5 text-xs uppercase">
-          
+          <div className="flex flex-col gap-10 basis-3/5 text-xs uppercase">         
           {
-  
-            posts?.map((post) => (<PostItem key={post.id} post={post} />))
-          }
-           
+            posts?.map((post) => (<PostItem post={post} key={post._id} />))
+          }          
           </div>
           <div className="basis-2/5">
-            <div className="text-xs uppercase text-white">POPULAR POSTS:</div>
-  
+            <div className="text-xs uppercase text-white">POPULAR POSTS:</div>    
             {
               popularPosts?.map((post) => (
-                <Link to={`/${post._id}`}>
-                <PopularPost key={post.id}  post={post} />
+                <Link key={post._id} to={`/${post._id}`}>
+                <PopularPost key={post._id} post={post} />
                 </Link>
               ))
             }

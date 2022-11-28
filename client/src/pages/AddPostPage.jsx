@@ -81,12 +81,14 @@ export default function AddPostPage() {
 
         <div className="flex gap-10 items-center justify-center mt-4">
           <button
+          type='button'
             onClick={submitHandler}
             className="flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px]"
           >
             ADD POST
           </button>
           <button
+            type='button'
             onClick={clearFormHandler}
             className="flex justify-center items-center bg-red-900 text-xs text-white rounded-sm py-2 px-1 w-[100px]"
           >

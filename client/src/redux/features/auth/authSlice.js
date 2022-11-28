@@ -44,7 +44,7 @@ export const loginUser = createAsyncThunk(
   }
 )
 
-export const getMe = createAsyncThunk('auth/loginUser', async () => {
+export const getMe = createAsyncThunk('auth/getMe', async () => {
   try {
     const { data } = await axios.get('/auth/me')
 
@@ -66,96 +66,96 @@ export const authSlice = createSlice({
     },
   },
 
-  // extraReducers: (builder) => {
-  //   builder.addCase(registerUser.pending, (state) => {
-  //     state.isLoading = true
-  //     state.status = null
-  //   })
-  //   builder.addCase(registerUser.fulfilled, (state, action) => {
-  //     state.isLoading = false
-  //     state.status = action.payload.message
-  //     state.user = action.payload.user
-  //     state.token = action.payload.token
-  //   })
-  //   builder.addCase(registerUser.rejected, (state, action) => {
-  //     state.status = action.payload.message
-  //     state.isLoading = false
-  //   })
-  //   builder.addCase(loginUser.pending, (state) => {
-  //     state.isLoading = true
-  //     state.status = null
-  //   })
-  //   builder.addCase(loginUser.fulfilled, (state, action) => {
-  //     state.isLoading = false
-  //     state.status = action.payload.message
-  //     state.user = action.payload.user
-  //     state.token = action.payload.token
-  //   })
-  //   builder.addCase(loginUser.rejected, (state, action) => {
-  //     state.status = action.payload.message
-  //     state.isLoading = false
-  //   })
-  //   builder.addCase(getMe.pending, (state) => {
-  //     state.isLoading = true
-  //     state.status = null
-  //   })
-  //   builder.addCase(getMe.fulfilled, (state, action) => {
-  //     state.isLoading = false
-  //     state.status = null
-  //     state.user = action.payload?.user
-  //     state.token = action.payload?.token
-  //   })
-  //   builder.addCase(getMe.rejected, (state, action) => {
-  //     state.status = action.payload.message
-  //     state.isLoading = false
-  //   })
-
-  extraReducers: {
-    //Registration
-    [registerUser.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(registerUser.pending, (state) => {
       state.isLoading = true
       state.status = null
-    },
-    [registerUser.fulfilled]: (state, action) => {
+    })
+    builder.addCase(registerUser.fulfilled, (state, action) => {
       state.isLoading = false
       state.status = action.payload.message
       state.user = action.payload.user
       state.token = action.payload.token
-    },
-    [registerUser.rejected]: (state, action) => {
+    })
+    builder.addCase(registerUser.rejected, (state, action) => {
       state.status = action.payload.message
       state.isLoading = false
-    },
-    //Login
-    [loginUser.pending]: (state) => {
+    })
+    builder.addCase(loginUser.pending, (state) => {
       state.isLoading = true
       state.status = null
-    },
-    [loginUser.fulfilled]: (state, action) => {
+    })
+    builder.addCase(loginUser.fulfilled, (state, action) => {
       state.isLoading = false
       state.status = action.payload.message
       state.user = action.payload.user
       state.token = action.payload.token
-    },
-    [loginUser.rejected]: (state, action) => {
+    })
+    builder.addCase(loginUser.rejected, (state, action) => {
       state.status = action.payload.message
       state.isLoading = false
-    },
-    //check authorization
-    [getMe.pending]: (state) => {
+    })
+    builder.addCase(getMe.pending, (state) => {
       state.isLoading = true
       state.status = null
-    },
-    [getMe.fulfilled]: (state, action) => {
+    })
+    builder.addCase(getMe.fulfilled, (state, action) => {
       state.isLoading = false
       state.status = null
       state.user = action.payload?.user
       state.token = action.payload?.token
-    },
-    [getMe.rejected]: (state, action) => {
+    })
+    builder.addCase(getMe.rejected, (state, action) => {
       state.status = action.payload.message
       state.isLoading = false
-    },
+    })
+
+//   extraReducers: {
+//     //Registration
+//     [registerUser.pending]: (state) => {
+//       state.isLoading = true
+//       state.status = null
+//     },
+//     [registerUser.fulfilled]: (state, action) => {
+//       state.isLoading = false
+//       state.status = action.payload.message
+//       state.user = action.payload.user
+//       state.token = action.payload.token
+//     },
+//     [registerUser.rejected]: (state, action) => {
+//       state.status = action.payload.message
+//       state.isLoading = false
+//     },
+//     //Login
+//     [loginUser.pending]: (state) => {
+//       state.isLoading = true
+//       state.status = null
+//     },
+//     [loginUser.fulfilled]: (state, action) => {
+//       state.isLoading = false
+//       state.status = action.payload.message
+//       state.user = action.payload.user
+//       state.token = action.payload.token
+//     },
+//     [loginUser.rejected]: (state, action) => {
+//       state.status = action.payload.message
+//       state.isLoading = false
+//     },
+//     //check authorization
+//     [getMe.pending]: (state) => {
+//       state.isLoading = true
+//       state.status = null
+//     },
+//     [getMe.fulfilled]: (state, action) => {
+//       state.isLoading = false
+//       state.status = null
+//       state.user = action.payload?.user
+//       state.token = action.payload?.token
+//     },
+//     [getMe.rejected]: (state, action) => {
+//       state.status = action.payload.message
+//       state.isLoading = false
+//     },
   },
 })
 
