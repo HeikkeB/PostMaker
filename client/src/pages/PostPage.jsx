@@ -17,6 +17,7 @@ export default function PostPage() {
   const params = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  
 const handleRemovePost = () => {
   try {
     dispatch(removePost(params.id))   
@@ -71,7 +72,7 @@ fetchComments()
       <div className='w-2/3 '>
         <div className='flex flex-col basis-1/4 flex-grow'>
         <div className={
-      post?.imgUrl ? 'flex h-80' : 'flex rounded-sm'
+      post?.imgUrl ? 'flex h-full' : 'flex rounded-sm'
     }>{
       post?.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-lg' />)
     }</div>

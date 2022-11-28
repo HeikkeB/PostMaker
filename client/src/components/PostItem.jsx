@@ -12,7 +12,7 @@ export default function PostItem({post}) {
   return <Link to={`/${post._id}`}>
     <div className='flex flex-col basis-1/4 flex-grow mt-4'>
     <div className={
-      post.imgUrl ? 'flex rounded-sm h-80' : 'flex rounded-sm'
+      post.imgUrl ? 'flex rounded-sm h-80 object-cover' : 'flex rounded-sm'
     }>{
       post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-lg' />)
     }</div>

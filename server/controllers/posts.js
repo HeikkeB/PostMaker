@@ -61,14 +61,17 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const getById = async (req, res) => {
+export const getById = async (req, res, next) => {
   try {
-   const post = await Post.findByIdAndUpdate(req.params.id, {
-    $inc: { views: 1}
-   })
-      res.json(post)
+    const postId = await Post.findById(req.params.id)
+      if(postId) {
+        const post = await Post.findByIdAndUpdate(req.params.id, {
+         $inc: { views: 1}
+        })
+          res.json(post)
+      }
   } catch (error) {
-    res.json({ message: 'Something went wrong!' })
+    res.json({ message: 'wrong!' })
   }
 }
 

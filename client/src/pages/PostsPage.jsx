@@ -5,15 +5,16 @@ import axios from '../utils/axios'
 export default function PostsPage() {
   const [posts, setPosts] = useState([])
   
-  useEffect(() => {
-    const fetchMyPosts = async () => {
-      try {
-        const {data} = await axios.get('/posts/user/me')
-        setPosts(data)
-      } catch (error) {
-        console.log(error)
-      }
+  const fetchMyPosts = async () => {
+    try {
+      const {data} = await axios.get('/posts/user/me')
+      setPosts(data)
+    } catch (error) {
+      console.log(error)
     }
+  }
+
+  useEffect(() => {
     fetchMyPosts()
   }, [])
 

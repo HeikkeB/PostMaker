@@ -27,6 +27,10 @@ app.use(express.static('uploads'))
 app.use('/api/auth', authRoute)
 app.use('/api/posts', postRoute)
 app.use('/api/comments', commentRoute)
+app.use('/', ((req, res) => {
+  res.redirect( '/api/auth/me')
+}))
+
 
 async function start() {
   try {
