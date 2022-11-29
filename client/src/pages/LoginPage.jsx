@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { checkAuth, loginUser } from '../redux/features/auth/authSlice'
+import { useForm } from 'react-hook-form'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
@@ -11,6 +12,15 @@ export default function LoginPage() {
   const isAuth = useSelector(checkAuth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {register, 
+    formState: {
+errors, isValid
+  },
+  handleSubmit, 
+  reset
+} = useForm({
+  mode: 'onBlur'
+})
 
   useEffect(() => {
     if (status) {
@@ -22,7 +32,7 @@ export default function LoginPage() {
     }
   }, [status, isAuth, navigate])
 
-  const handleSubmit = () => {
+  const handleSubmitLog = () => {
     try {
       dispatch(loginUser({ username, password }))
     } catch (error) {
@@ -36,7 +46,6 @@ export default function LoginPage() {
       <h1 className="text-white text-lg text-center">Login</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <label className="text-xs text-gray-400 ml-2">
-          Username:{' '}
           <input
             type="text"
             value={username}
@@ -46,7 +55,6 @@ export default function LoginPage() {
           ></input>
         </label>
         <label className="text-xs text-gray-400 ml-2">
-          Password:{' '}
           <input
             type="password"
             value={password}
@@ -59,7 +67,7 @@ export default function LoginPage() {
         <div className="flex flex-col gap-8 justify-center items-center mt-4">
           <button
             type="submit"
-            onClick={handleSubmit}
+            onClick={handleSubmitLog}
             className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-[100px] py-2 px-1"
           >
             LOGIN
