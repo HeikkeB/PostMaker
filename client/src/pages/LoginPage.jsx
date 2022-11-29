@@ -60,9 +60,9 @@ export default function LoginPage() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-16 py-1"
+            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-[100px] py-2 px-1"
           >
-            login
+            LOGIN
           </button>
           <Link
             to="/register"

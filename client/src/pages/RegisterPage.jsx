@@ -60,15 +60,15 @@ export default function RegisterPage() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-16 py-1"
+            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-[100px] py-2 px-1"
           >
-            confirm
+            CONFIRM
           </button>
           <Link
             to="/login"
             className="flex justify-center items-center text-xs text-white "
           >
-            Have an account?
+            have an account?
           </Link>
         </div>
       </form>
