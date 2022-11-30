@@ -64,13 +64,13 @@ fetchComments()
     NO POSTS
   </div>
   }
-  return <div>
-
-    <button className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-1 px-4 mt-3'><Link to={'/'}>BACK</Link></button>
-
-    <div className='flex justify-center items-center flex-col gap-10 py-8'>
-      <div className='w-2/3 '>
-        <div className='flex flex-col basis-1/4 flex-grow'>
+  return <div className='relative'>
+<button className='absolute top-8 flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-1 px-4 h-[32px]'><Link to={'/'}>BACK</Link></button>  
+    <div className='flex justify-center items-center flex-col gap-10 py-8'>    
+      <div className='w-2/3'>   
+      
+        <div className='flex justify-center basis-1/4 flex-grow'>
+       
         <div className={
       post?.imgUrl ? 'flex h-full' : 'flex rounded-sm'
     }>{

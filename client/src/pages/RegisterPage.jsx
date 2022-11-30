@@ -41,8 +41,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="w-1/4 h-60 mx-auto mt-40">
-      <h1 className="text-white text-lg text-center">Registration</h1>
+    <div className="w-1/4 h-60 mx-auto mt-40 flex flex-col justify-center items-center">
+      <h1 className="titlePage">Registration</h1>
       <form onSubmit={handleSubmit((e) => {
             handleSubmitReg()
       } )}>
@@ -63,9 +63,9 @@ export default function RegisterPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
-            className="mt-5 text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none placeholder:text-gray-700"
+            className="inputPage mt-5"
           ></input>
-          <div className='text-xs text-red-600 mt-1 h-4'>{errors?.username && <span>{errors?.username?.message || 'Error!'}</span>}</div>
+          <div className='errorInput'>{errors?.username && <span>{errors?.username?.message || 'Error!'}</span>}</div>
         </section>
         <section className="text-xs text-gray-400">
           <input
@@ -85,9 +85,9 @@ export default function RegisterPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             autoComplete="off"
-            className="text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none placeholder:text-gray-700"
+            className="inputPage"
           ></input>
-          <div className='text-xs text-red-600 mt-1 h-4'>{errors?.password && <span>{errors?.password?.message || 'Error!'}</span>}</div>
+          <div className='errorInput'>{errors?.password && <span>{errors?.password?.message || 'Error!'}</span>}</div>
         </section>
         <div className="flex flex-col gap-8 justify-center items-center mt-5">
           <button
@@ -99,7 +99,7 @@ export default function RegisterPage() {
           </button>
           <Link
             to="/login" 
-            className="flex justify-center items-center text-xs text-white "
+            className="flex justify-center items-center text-xs text-slate-300 hover:text-[#d55f34]"
           >
             have an account?
           </Link>
