@@ -20,14 +20,14 @@ export default function NavBar() {
       {isAuth && (
         <ul className="flex gap-8">
           <li>
-            <NavLink to="/" className="text-xs text-gray-400 hover:text-[#fcb79e]">
+            <NavLink to="/" className="navLink">
               Home
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/posts"
-              className="text-xs text-gray-400 hover:text-[#fcb79e]"
+              className="navLink"
             >
               My Posts
             </NavLink>
@@ -35,7 +35,7 @@ export default function NavBar() {
           <li>
             <NavLink
               to="/new"
-              className="text-xs text-gray-400 hover:text-[#fcb79e]"
+              className="navLink"
             >
               Add Post
             </NavLink>

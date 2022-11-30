@@ -23,8 +23,8 @@
 
 }
 
-nav .active {
-  color:#FD8558;
+nav .active { 
+  color:#d05528;
 }
 
 .titlePage {
@@ -113,6 +113,45 @@ nav .active {
   box-shadow: 1px 1px 1px #712002;
 }
 
-.btnSing {
+.navLink {
+  font-size: 0.75rem;/* 12px */
+    line-height: 1rem;/* 16px */
+    color: rgb(203 213 225);
+    text-transform: uppercase;
+}
 
+.navLink:hover {
+ color:#FD8558;
+}
+
+.btnPageBig {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;/* 12px */
+  line-height: 1rem;/* 16px */
+  color: #b5b3b2;
+  border-radius: 0.25rem;/* 4px */
+  padding-top: 0.5rem;/* 8px */
+  padding-bottom: 0.5rem;/* 8px */
+  padding-left: 0.25rem;/* 4px */
+  padding-right: 0.25rem;/* 4px */
+  box-shadow: 2px 3px 3px #0b0b0b;
+  background-color: rgba(0, 0, 0, .15);
+  border-bottom: 1px solid #111010;
+  width: 100%;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btnPageBig:hover {
+  box-shadow: 2px 2px 4px #802302;
+  border-bottom: 1px solid #e6683a;
+  color: #e6683a;
+}
+
+.btnPageBig:active {
+  border-bottom: 1px solid #e6683a;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 1px #712002;
 }
