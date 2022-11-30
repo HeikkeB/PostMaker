@@ -43,10 +43,10 @@ export default function RegisterPage() {
   return (
     <div className="w-1/4 h-60 mx-auto mt-40 flex flex-col justify-center items-center">
       <h1 className="titlePage">Registration</h1>
-      <form onSubmit={handleSubmit((e) => {
+      <form onSubmit={handleSubmit(() => {
             handleSubmitReg()
       } )}>
-        <section className="text-xs text-gray-400 mb-5">
+        <section className="mb-5">
           <input
             type="text"
             {...register('username', {
@@ -58,7 +58,7 @@ export default function RegisterPage() {
               maxLength: {
                 value: 20,
                 message: 'max 20 characters'
-              }
+              },
             })}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -67,7 +67,7 @@ export default function RegisterPage() {
           ></input>
           <div className='errorInput'>{errors?.username && <span>{errors?.username?.message || 'Error!'}</span>}</div>
         </section>
-        <section className="text-xs text-gray-400">
+        <section>
           <input
             type="password"
             {...register('password', {
@@ -93,7 +93,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={!isValid}
-            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-[100px] py-2 px-1 disabled:bg-gray-400 disabled:opacity-30"
+            className="btnPage"
           >
             CONFIRM
           </button>

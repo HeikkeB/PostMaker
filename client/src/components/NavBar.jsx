@@ -43,7 +43,7 @@ export default function NavBar() {
         </ul>
       )}
 
-      <div className="flex justify-center items-center w-[100px]  text-xs text-white rounded-sm bg-gray-600 px-4 py-1">
+      <div className="btnPage">
         <Routes>
           <Route
             path="*"

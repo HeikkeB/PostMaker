@@ -28,13 +28,14 @@ errors, isValid
     }
     if (isAuth) {
       navigate('/')
-      toast.success(`You're logged in`)
+      //toast.success(`You're logged in`)
     }
   }, [status, isAuth, navigate])
 
   const handleSubmitLog = () => {
     try {
       dispatch(loginUser({ username, password }))
+      reset()
     } catch (error) {
       console.log(error)
       toast.error('Something went wrong!')
@@ -42,39 +43,65 @@ errors, isValid
   }
 
   return (
-    <div className="w-1/4 h-60 mx-auto mt-40">
-      <h1 className="text-white text-lg text-center">Login</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label className="text-xs text-gray-400 ml-2">
+    <div className="w-1/4 h-60 mx-auto mt-40 flex flex-col justify-center items-center">
+      <h1 className="titlePage">Login</h1>
+      <form onSubmit={handleSubmit(() => {
+        handleSubmitLog()
+      })}>
+        <section className="mb-5">
           <input
             type="text"
+            {...register('username', {
+              required: 'required field',
+              minLength: {
+                value: 3,
+                message: 'min 5 characters'
+              },
+              maxLength: {
+                value: 20,
+                message: 'max 20 characters'
+              },
+            })}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
-            className="mt-1 mb-3 text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none placeholder:text-gray-700"
+            className="inputPage mt-5"
           ></input>
-        </label>
-        <label className="text-xs text-gray-400 ml-2">
+          <div className='errorInput'>{errors?.username && <span>{errors?.username.message || 'Error!'}</span>}</div>
+        </section>
+        <section>
           <input
             type="password"
+            {...register('password', {
+              required: 'required field',
+              minLength: {
+                value: 3,
+                message: 'min 8 characters'
+              },
+              maxLength: {
+                value: 20,
+                message: 'max 20 characters'
+              },
+            })}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             autoComplete="off"
-            className="mt-1 text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none placeholder:text-gray-700"
+            className="inputPage"
           ></input>
-        </label>
-        <div className="flex flex-col gap-8 justify-center items-center mt-4">
+          <div className='errorInput'>{errors?.password && <span>{errors?.password?.message || 'Error!'}</span>}</div>
+        </section>
+        <div className="flex flex-col gap-8 justify-center items-center mt-5">
           <button
             type="submit"
-            onClick={handleSubmitLog}
-            className="flex justify-center items-center text-xs text-white rounded-sm py-w bg-gray-600 w-[100px] py-2 px-1"
+            disabled={!isValid}
+            className="btnPage"
           >
             LOGIN
           </button>
           <Link
             to="/register"
-            className="flex justify-center items-center text-xs text-white "
+            className="flex justify-center items-center text-xs text-slate-300 hover:text-[#d55f34]"
           >
             Don't have an account?
           </Link>
