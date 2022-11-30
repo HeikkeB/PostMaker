@@ -41,8 +41,7 @@ const submitHandler = () => {
 }
 
 const clearFormHandler = () => {
-  setTitle('')
-  setText('')
+  navigate('/posts')
 }
 
   return (

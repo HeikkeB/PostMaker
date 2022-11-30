@@ -38,6 +38,7 @@ export default function AddPostPage() {
   const clearFormHandler = () => {
     setTitle('')
     setText('')
+    navigate('/')
   }
 
   return (

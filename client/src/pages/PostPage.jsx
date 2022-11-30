@@ -68,7 +68,7 @@ fetchComments()
 
     <button className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-1 px-4 mt-3'><Link to={'/'}>BACK</Link></button>
 
-    <div className='flex gap-10 py-8'>
+    <div className='flex justify-center items-center flex-col gap-10 py-8'>
       <div className='w-2/3 '>
         <div className='flex flex-col basis-1/4 flex-grow'>
         <div className={
@@ -109,16 +109,16 @@ fetchComments()
     </div>
       </div>
 
-      <div className='w-1/3 p-8 bg-gray-700 flex flex-col gap-4 rounded-lg'>
+      <div className='w-2/3 p-8 bg-gray-700 flex flex-col gap-4 rounded-lg'>
       <form className='flex gap-3' onSubmit={e => e.preventDefault()}>
-        <input 
+        <textarea
           type='text'
           value={comment}
           onChange={e => setComment(e.target.value)}
           placeholder='Comment'
-          className='text-black w-full rounded-lg bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700'
+          className='text-black w-full rounded-lg bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700 max-h-16'
         />
-        <button type='button' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px]'>SUBMIT</button>
+        <button type='button' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px] h-[32px]'>SUBMIT</button>
       </form>
       {
         comments?.map((cmt) => (
