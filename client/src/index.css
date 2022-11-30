@@ -113,6 +113,38 @@ nav .active {
   box-shadow: 1px 1px 1px #712002;
 }
 
+.btnPageRed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;/* 12px */
+  line-height: 1rem;/* 16px */
+  color: #b5b3b2;
+  border-radius: 0.25rem;/* 4px */
+  padding-top: 0.5rem;/* 8px */
+  padding-bottom: 0.5rem;/* 8px */
+  padding-left: 0.25rem;/* 4px */
+  padding-right: 0.25rem;/* 4px */
+  box-shadow: 2px 3px 3px #0b0b0b;
+  background-color: rgba(109, 4, 4, 0.878);
+  border-bottom: 1px solid #111010;
+  width: 110px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btnPageRed:hover {
+  box-shadow: 2px 2px 4px #800202;
+  border-bottom: 1px solid #f32020;
+  color: #dedddd;
+}
+
+.btnPageRed:active {
+  border-bottom: 1px solid #e63a3a;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 1px #710202;
+}
+
 .navLink {
   font-size: 0.75rem;/* 12px */
     line-height: 1rem;/* 16px */
@@ -154,4 +186,35 @@ nav .active {
   border-bottom: 1px solid #e6683a;
   transform: translateY(2px);
   box-shadow: 1px 1px 1px #712002;
+}
+
+.inputPageBig {
+  border-bottom: 1px solid #1c1b1b;
+  background-color: rgba(0, 0, 0, .15);
+  color: rgb(203 213 225);
+  width: 100%;
+  border-radius: 0.5rem;/* 8px */
+  font-size: 0.75rem;/* 12px */
+  line-height: 1rem;/* 16px */
+  box-shadow: 2px 3px 3px #0b0b0b;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding-top: 0.25rem;/* 4px */
+  padding-bottom: 0.25rem;/* 4px */
+  padding-left: 0.5rem;/* 8px */
+  padding-right: 0.5rem;/* 8px */
+}
+
+.inputPageBig:hover {
+  border-bottom: 1px solid #e6683a;
+  box-shadow: 2px 1px 3px #802302;
+}
+
+.inputPageBig::placeholder {
+  color: #b5b3b2;
+}
+
+.inputPageBig:focus {
+  border-bottom: 1px solid #e6683a;
+  box-shadow: 2px 1px 3px #802302;
 }
