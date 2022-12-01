@@ -4,16 +4,7 @@
 
 @layer base {
   body {
-    background: -webkit-linear-gradient(
-      171deg,
-      #121212,
-      #181818
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      171deg,
-      #121212,
-      #181818
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background:#1d1d1e;
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     color: aliceblue;
@@ -148,7 +139,7 @@ nav .active {
 .navLink {
   font-size: 0.75rem;/* 12px */
     line-height: 1rem;/* 16px */
-    color: rgb(203 213 225);
+    color: #cbd5e1;
     text-transform: uppercase;
 }
 
@@ -217,4 +208,31 @@ nav .active {
 .inputPageBig:focus {
   border-bottom: 1px solid #e6683a;
   box-shadow: 2px 1px 3px #802302;
+}
+
+.postItem {
+  border-radius: 0.5rem;
+  box-shadow: 2px 3px 3px #0b0b0b;
+  background-color: rgba(0, 0, 0, .15);
+  border-bottom: 1px solid #111010;
+}
+
+.postItem:hover {
+  opacity: 0.95;
+  box-shadow: 2px 2px 4px #802302;
+  border-bottom: 1px solid #e6683a;
+  color: #e6683a;
+}
+
+.postItem:active {
+  border-bottom: 1px solid #e6683a;
+  transform: translateY(2px);
+  box-shadow: 1px 1px 1px #712002;
+}
+
+.postItemNoHover {
+  border-radius: 0.5rem;
+  box-shadow: 2px 3px 3px #0b0b0b;
+  background-color: rgba(0, 0, 0, .15);
+  border-bottom: 1px solid #111010;
 }

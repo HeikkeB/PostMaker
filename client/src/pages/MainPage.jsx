@@ -18,7 +18,7 @@ export default function MainPage() {
 
   if(!posts.length) {
     return (
-      <div className='text-xl text-center text-white py-10'>
+      <div className='titlePage py-10'>
         NO POSTS
       </div>
     )
@@ -29,13 +29,13 @@ export default function MainPage() {
       <div className="max-w-[1080px] mx-auto py-10">
         <div className="flex justify-between gap-14">
         
-          <div className="flex flex-col gap-10 basis-3/5 text-xs uppercase">         
+          <div className="flex flex-col gap-4 basis-3/5 text-xs">        
           {
             posts?.map((post) => (<PostItem post={post} key={post._id} />))
           }          
           </div>
           <div className="basis-2/5">
-            <div className="text-xs uppercase text-white">POPULAR POSTS:</div>    
+            <div className="navLink">POPULAR POSTS</div>    
             {
               popularPosts?.map((post) => (
                 <Link key={post._id} to={`/${post._id}`}>

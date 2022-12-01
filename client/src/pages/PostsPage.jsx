@@ -25,7 +25,7 @@ export default function PostsPage() {
   }, [isAuth])
 
 if(isAuth) {
-  return <div className='w-1/2 mx-auto py-10 flex flex-col gap-10'>
+  return <div className='w-1/2 mx-auto py-10 flex flex-col gap-4'>
     {posts?.map((post, index) => (
       <PostItem key={index} post={post} />
     ))}

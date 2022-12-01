@@ -15,7 +15,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className={isAuth ? "flex py-4 justify-between items-center" : "flex py-4 justify-end items-center"}>
+    <nav className={isAuth ? "px-2 flex py-4 justify-between items-center" : "px-2 flex py-4 justify-end items-center"}>
     
       {isAuth && (
         <ul className="flex gap-8">

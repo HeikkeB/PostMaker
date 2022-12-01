@@ -78,7 +78,7 @@ export default function AddPostPage() {
           />
         </section>
 
-        <div className="flex gap-10 items-center justify-center mt-4">
+        <div className="flex gap-10 items-center justify-center mt-6">
           <button
           type='button'
             onClick={submitHandler}

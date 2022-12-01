@@ -8,6 +8,7 @@ import {removePost} from '../redux/features/post/postSlice'
 import { toast } from 'react-toastify'
 import { createComment, getPostComments } from '../redux/features/comment/commentSlice'
 import CommentItem from '../components/CommentItem'
+import { useForm } from 'react-hook-form'
 
 export default function PostPage() {
   const [post, setPost] = useState(null)
@@ -17,6 +18,15 @@ export default function PostPage() {
   const params = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {register, 
+    formState: {
+      errors, isValid, 
+  }, 
+  handleSubmit,
+  reset,
+} = useForm({
+  mode: 'onBlur',
+})
   
 const handleRemovePost = () => {
   try {
@@ -37,7 +47,7 @@ useEffect(() => {
   fetchPost()
 }, [fetchPost]);
 
-const handleSubmit = () => {
+const handleSubmitCom = () => {
   try {
     const postId = params.id
     dispatch(createComment({postId, comment}))
@@ -60,40 +70,38 @@ fetchComments()
 }, [fetchComments])
 
   if(!post) {
-    return  <div className='text-xl text-center text-white py-10'>
+    return  <div className='titlePage py-10'>
     NO POSTS
   </div>
   }
   return <div className='relative'>
-<button className='absolute top-8 flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-1 px-4 h-[32px]'><Link to={'/'}>BACK</Link></button>  
+<button className='absolute top-8 btnPage'><Link to={'/'}>BACK</Link></button>  
     <div className='flex justify-center items-center flex-col gap-10 py-8'>    
-      <div className='w-2/3'>   
-      
-        <div className='flex justify-center basis-1/4 flex-grow'>
-       
+      <div className='w-2/3'>        
+        <div className='flex justify-center basis-1/4 flex-grow'>      
         <div className={
       post?.imgUrl ? 'flex h-full' : 'flex rounded-sm'
     }>{
       post?.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-lg' />)
     }</div>
         </div>
-        <div className='flex justify-between items-center pt-2'>
-      <div className='text-xs text-white opacity-50 mb-1'>{post.username}</div>
-      <div className='text-xs text-white opacity-50 flex gap-2'>
+        <div className='flex justify-between items-center pt-3 px-2'>
+      <div className='text-xs text-[#cbd5e1] opacity-50 mb-1'>{post.username}</div>
+      <div className='text-xs text-[#cbd5e1] opacity-50 flex gap-2'>
         <div> <Moment date={post.createdAt} format='HH:mm' /></div>
         <div> <Moment date={post.createdAt} format='DD-MMM-YYYY' /></div>
       </div> 
     </div>
-    <div className='text-white text-xl'>{post.title}</div>
-    <p className='text-white opacity-40 text-xs pt-4'>{post.text}</p>
+    <div className='text-[#cbd5e1] text-xl px-2 mt-3'>{post.title}</div>
+    <p className='text-[#cbd5e1] opacity-90 text-xs pt-5 px-2'>{post.text}</p>
 
 
     <div className='flex gap-3 items-center mt-4 justify-between'>
      <div className='flex gap-3'>
-     <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'>
+     <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'>
         <AiFillEye /> <span>{post.views}</span>
       </button>
-      {/* <button className='flex items-center justify-center gap-2 text-[12px] text-white opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button> */}
+      {/* <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button> */}
      </div>
      {
   user?._id === post.author && ( 
@@ -109,8 +117,10 @@ fetchComments()
     </div>
       </div>
 
-      <div className='w-2/3 p-8 bg-gray-700 flex flex-col gap-4 rounded-lg'>
-      <form className='flex gap-3' onSubmit={e => e.preventDefault()}>
+      <div className='postItemNoHover w-2/3 p-8 flex flex-col gap-4 rounded-lg'>
+      <form className='flex gap-3' onSubmit={handleSubmit(()=> {
+        handleSubmitCom()
+      })}>
         <textarea
           type='text'
           value={comment}
@@ -118,7 +128,7 @@ fetchComments()
           placeholder='Comment'
           className='text-black w-full rounded-lg bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700 max-h-16'
         />
-        <button type='button' onClick={handleSubmit} className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-1 w-[100px] h-[32px]'>SUBMIT</button>
+        <button type='button' onClick={handleSubmitCom} className='btnPage h-[32px]'>SUBMIT</button>
       </form>
       {
         comments?.map((cmt) => (
