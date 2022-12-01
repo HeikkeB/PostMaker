@@ -17,8 +17,8 @@ export default function PostItem({post}) {
     }>{
       post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-t-lg' />)
     }</div>
-    <div className='flex justify-between items-center pt-2 px-3'>
-      <div className='text-xs text-[#cbd5e1] opacity-50 mb-1'>{post.username}</div>
+    <div className='flex justify-between items-center pt-2 px-3 mb-5'>
+      <div className='text-xs text-[#cbd5e1] opacity-50'>{post.username}</div>
       <div className='text-xs text-[#cbd5e1] opacity-50 flex gap-2'>
         <div> <Moment date={post.createdAt} format='HH:mm' /></div>
         <div> <Moment date={post.createdAt} format='DD-MMM-YYYY' /></div>

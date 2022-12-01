@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect } from 'react'
-import {AiFillEye, AiTwotoneEdit, AiFillDelete} from 'react-icons/ai'
+import {AiFillEye, AiTwotoneEdit, AiFillDelete, AiOutlineMessage} from 'react-icons/ai'
 import Moment from 'react-moment'
 import axios from '../utils/axios'
 import {Link, useNavigate, useParams} from 'react-router-dom'
@@ -19,14 +19,8 @@ export default function PostPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const {register, 
-    formState: {
-      errors, isValid, 
-  }, 
   handleSubmit,
-  reset,
-} = useForm({
-  mode: 'onBlur',
-})
+} = useForm()
   
 const handleRemovePost = () => {
   try {
@@ -101,7 +95,7 @@ fetchComments()
      <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'>
         <AiFillEye /> <span>{post.views}</span>
       </button>
-      {/* <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button> */}
+      <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'><AiOutlineMessage /> <span>{post.comments?.length}</span></button>
      </div>
      {
   user?._id === post.author && ( 
@@ -117,22 +111,27 @@ fetchComments()
     </div>
       </div>
 
-      <div className='postItemNoHover w-2/3 p-8 flex flex-col gap-4 rounded-lg'>
-      <form className='flex gap-3' onSubmit={handleSubmit(()=> {
+      <div className='w-2/3 p-8 flex flex-col gap-4 rounded-lg'>
+      <form className='flex gap-3 mb-5' onSubmit={handleSubmit(()=> {
+        if(comment.length > 0) {
         handleSubmitCom()
+        }
       })}>
         <textarea
           type='text'
+          {...register('comment', {
+            required: 'required field',
+          })}
           value={comment}
           onChange={e => setComment(e.target.value)}
           placeholder='Comment'
-          className='text-black w-full rounded-lg bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700 max-h-16'
+          className='inputPageBig h-20 max-h-24'
         />
-        <button type='button' onClick={handleSubmitCom} className='btnPage h-[32px]'>SUBMIT</button>
+        <button type='submit' className='btnPage h-[32px]'>SUBMIT</button>
       </form>
       {
         comments?.map((cmt) => (
-         <CommentItem key={cmt._id} cmt={cmt} />
+         <CommentItem key={cmt.id} cmt={cmt} />
         ))
       }
       </div>

@@ -235,4 +235,5 @@ nav .active {
   box-shadow: 2px 3px 3px #0b0b0b;
   background-color: rgba(0, 0, 0, .15);
   border-bottom: 1px solid #111010;
+  padding:10px 15px;
 }
