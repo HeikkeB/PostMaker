@@ -1,21 +1,20 @@
-import React from 'react'
-import {AiFillEye, AiOutlineMessage} from 'react-icons/ai'
-import Moment from 'react-moment'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import {AiFillEye, AiOutlineMessage} from 'react-icons/ai';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
-export default function PostItem({post}) {
-  if(!post) {
-    return  <div className='titlePage py-10'>
+export default function PostItem({ post }) {
+  if (!post) {
+    return <div className='titlePage py-10'>
     NO POSTS
   </div>
   }
   return <Link to={`/${post._id}`}>
     <div className='flex flex-col basis-1/4 flex-grow mt-5 postItem'>
-    
     <div className={
       post.imgUrl ? 'flex rounded-t-sm h-80 object-cover' : 'flex rounded-t-sm'
     }>{
-      post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt='img' className='object-cover w-full rounded-t-lg' />)
+      post.imgUrl && (<img src={`http://localhost:5000/${post.imgUrl}`} alt={`${post.imgUrl}`} className='object-cover w-full rounded-t-lg' />)
     }</div>
     <div className='flex justify-between items-center pt-2 px-3 mb-5'>
       <div className='text-xs text-[#cbd5e1] opacity-50'>{post.username}</div>

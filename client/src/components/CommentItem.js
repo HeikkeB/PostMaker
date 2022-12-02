@@ -1,7 +1,6 @@
-import Moment from 'react-moment'
+import Moment from 'react-moment';
 
-export default function CommentItem({cmt}) {
-
+export default function CommentItem({ cmt }) {
   return (
     <div className='flex flex-col items-end justify-between gap-3 mb-6 postItemNoHover'>
       <p className='flex text-[#cbd5e1] text-[14px] truncate whitespace-pre-wrap self-start'>{cmt.comment}</p>
@@ -10,5 +9,5 @@ export default function CommentItem({cmt}) {
         <div> <Moment date={cmt.createdAt} format='DD-MMM-YY' /></div>
       </div>
     </div>
-  )
+  );
 }

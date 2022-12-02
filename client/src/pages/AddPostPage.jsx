@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { createPost } from '../redux/features/post/postSlice'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createPost } from '../redux/features/post/postSlice';
 
 export default function AddPostPage() {
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [image, setImage] = useState('')
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+  const [image, setImage] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const submitHandler = () => {
     try {
-      const data = new FormData()
-      data.append('title', title)
-      data.append('text', text)
-      data.append('image', image)
-      dispatch(createPost(data))
+      const data = new FormData();
+      data.append('title', title);
+      data.append('text', text);
+      data.append('image', image);
+      dispatch(createPost(data));
       toast.success('Congratulations! Create Post!', {
         position: 'bottom-right',
         autoClose: 4000,
@@ -27,19 +27,19 @@ export default function AddPostPage() {
         draggable: true,
         progress: undefined,
         theme: 'dark',
-      })
-      navigate('/')
+      });
+      navigate('/');
     } catch (error) {
-      console.log(error)
-      toast.error('Something went wrong!')
+      console.log(error);
+      toast.error('Something went wrong!');
     }
-  }
+  };
 
   const clearFormHandler = () => {
-    setTitle('')
-    setText('')
-    navigate('/')
-  }
+    setTitle('');
+    setText('');
+    navigate('/');
+  };
 
   return (
     <div>
@@ -59,7 +59,7 @@ export default function AddPostPage() {
           {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
         </div>
 
-        <section className='w-full mb-6'>       
+        <section className='w-full mb-6'>
           <input
             type="text"
             value={title}
@@ -68,7 +68,7 @@ export default function AddPostPage() {
             className="inputPageBig"
           />
         </section>
-        <section className='w-full mb-6'>        
+        <section className='w-full mb-6'>
           <textarea
             type="text"
             value={text}
@@ -96,5 +96,5 @@ export default function AddPostPage() {
         </div>
       </form>
     </div>
-  )
+  );
 }

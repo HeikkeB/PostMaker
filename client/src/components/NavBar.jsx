@@ -1,22 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink, Routes, Route } from 'react-router-dom'
-import { checkAuth, logOut } from '../redux/features/auth/authSlice'
-import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Link, NavLink, Routes, Route,
+} from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { checkAuth, logOut } from '../redux/features/auth/authSlice';
 
 export default function NavBar() {
-  const isAuth = useSelector(checkAuth)
+  const isAuth = useSelector(checkAuth);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const logOutHandler = () => {
-    dispatch(logOut())
-    window.localStorage.removeItem('token')
-    toast.error(`You're logged out`)
-  }
+    dispatch(logOut());
+    window.localStorage.removeItem('token');
+    toast.error(`You're logged out`);
+  };
 
   return (
     <nav className={isAuth ? "px-10 flex py-4 justify-between items-center" : "px-10 flex py-4 justify-end items-center"}>
-    
       {isAuth && (
         <ul className="flex gap-8">
           <li>
@@ -58,5 +59,5 @@ export default function NavBar() {
         </Routes>
       </div>
     </nav>
-  )
+  );
 }

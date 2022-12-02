@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default function PopularPost({post}) {
-
+export default function PopularPost({ post }) {
   return <div className='postItem my-1 mb-4'>
      <div className={
         post.imgUrl ? 'flex rounded-t-sm h-26' : 'flex rounded-t-sm'
@@ -12,4 +11,4 @@ export default function PopularPost({post}) {
   {post.title}
   </div>
     </div>
-  }
+}

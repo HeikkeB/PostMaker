@@ -1,48 +1,47 @@
-import {useState, useCallback, useEffect} from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
-import { updatePost } from '../redux/features/post/postSlice'
-import axios from '../utils/axios'
+import { useState, useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updatePost } from '../redux/features/post/postSlice';
+import axios from '../utils/axios';
 
 export default function EditPostPage() {
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+  const [oldImage, setOldImage] = useState('');
+  const [newImage, setNewImage] = useState('');
 
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [oldImage, setOldImage] = useState('')
-  const [newImage, setNewImage] = useState('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const params = useParams();
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const params = useParams()
-
-  const fetchPost = useCallback(async() => {
-    const {data} = await axios.get(`/posts/${params.id}`)
-    setTitle(data.title)
-    setText(data.text)
-    setOldImage(data.imgUrl)
-  }, [params.id])
+  const fetchPost = useCallback(async () => {
+    const { data } = await axios.get(`/posts/${params.id}`);
+    setTitle(data.title);
+    setText(data.text);
+    setOldImage(data.imgUrl);
+  }, [params.id]);
 
   useEffect(() => {
-    fetchPost()
+    fetchPost();
   }, [fetchPost]);
 
-const submitHandler = () => {
-  try {
-    const updatedPost = new FormData()
-    updatedPost.append('title', title)
-    updatedPost.append('text', text)
-    updatedPost.append('id', params.id)
-    updatedPost.append('image', newImage)
-    dispatch(updatePost(updatedPost))
-    navigate('/posts')
-  } catch (error) {
-    console.log(error)
-  }
-}
+  const submitHandler = () => {
+    try {
+      const updatedPost = new FormData();
+      updatedPost.append('title', title);
+      updatedPost.append('text', text);
+      updatedPost.append('id', params.id);
+      updatedPost.append('image', newImage);
+      dispatch(updatePost(updatedPost));
+      navigate('/posts');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-const clearFormHandler = () => {
-  navigate('/posts')
-}
+  const clearFormHandler = () => {
+    navigate('/posts');
+  };
 
   return (
     <div>
@@ -56,9 +55,9 @@ const clearFormHandler = () => {
             type="file"
             className="hidden"
             onChange={(e) => {
-              setNewImage(e.target.files[0])
-              setOldImage('')
-              }}
+              setNewImage(e.target.files[0]);
+              setOldImage('');
+            }}
           />
         </label>
         <div className="flex object-cover py-6">
@@ -103,5 +102,5 @@ const clearFormHandler = () => {
         </div>
       </form>
     </div>
-  )
+  );
 }

@@ -1,55 +1,58 @@
-import { useCallback, useState, useEffect } from 'react'
-import {AiFillEye, AiTwotoneEdit, AiFillDelete, AiOutlineMessage} from 'react-icons/ai'
-import Moment from 'react-moment'
-import axios from '../utils/axios'
-import {Link, useNavigate, useParams} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import {removePost} from '../redux/features/post/postSlice'
-import { toast } from 'react-toastify'
-import { createComment, getPostComments } from '../redux/features/comment/commentSlice'
-import CommentItem from '../components/CommentItem'
-import { useForm } from 'react-hook-form'
+import { useCallback, useState, useEffect } from 'react';
+import {
+  AiFillEye, AiTwotoneEdit, AiFillDelete, AiOutlineMessage,
+} from 'react-icons/ai';
+import Moment from 'react-moment';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import axios from '../utils/axios';
+import { removePost } from '../redux/features/post/postSlice';
+import { createComment, getPostComments } from '../redux/features/comment/commentSlice';
+import CommentItem from '../components/CommentItem';
 
 export default function PostPage() {
-  const [post, setPost] = useState(null)
-  const [comment, setComment] = useState('')
-  const {user} = useSelector((state) => state.auth)
-  const { comments } = useSelector((state) => state.comment) 
-  const params = useParams()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const {register, 
-  handleSubmit,
-} = useForm()
-  
-const handleRemovePost = () => {
-  try {
-    dispatch(removePost(params.id))   
-    toast.error('Post has been deleted')
-    navigate('/posts')
-  } catch (error) {
-    console.log(error)
-  }
-}
+  const [post, setPost] = useState(null);
+  const [comment, setComment] = useState('');
+  const { user } = useSelector((state) => state.auth);
+  const { comments } = useSelector((state) => state.comment);
+  const params = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+  } = useForm();
 
-  const fetchPost = useCallback(async() => {
-    const {data} = await axios.get(`/posts/${params.id}`)
-    setPost(data)
-  }, [params.id])
+  const handleRemovePost = () => {
+    try {
+      dispatch(removePost(params.id));
+      toast.error('Post has been deleted');
+      navigate('/posts');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-useEffect(() => {
-  fetchPost()
-}, [fetchPost]);
+  const fetchPost = useCallback(async () => {
+    const { data } = await axios.get(`/posts/${params.id}`);
+    setPost(data);
+  }, [params.id]);
 
-const handleSubmitCom = () => {
-  try {
-    const postId = params.id
-    dispatch(createComment({postId, comment}))
-    setComment('')
-  } catch (error) {
-    console.log(error)
-  }
-}
+  useEffect(() => {
+    fetchPost();
+  }, [fetchPost]);
+
+  const handleSubmitCom = () => {
+    try {
+      const postId = params.id;
+      dispatch(createComment({ postId, comment }));
+      setComment('');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 const fetchComments = useCallback( async () => {
     try {
@@ -69,7 +72,7 @@ fetchComments()
   </div>
   }
   return <div className='relative'>
-<button className='absolute top-8 btnPage'><Link to={'/'}>BACK</Link></button>  
+<button className='absolute top-8 left-10 btnPage'><Link to={'/'}>BACK</Link></button>  
     <div className='flex justify-center items-center flex-col gap-10 py-8'>    
       <div className='w-2/3'>        
         <div className='flex justify-center basis-1/4 flex-grow'>      
