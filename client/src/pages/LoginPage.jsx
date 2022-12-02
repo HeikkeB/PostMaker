@@ -54,7 +54,7 @@ errors, isValid
             {...register('username', {
               required: 'required field',
               minLength: {
-                value: 3,
+                value: 5,
                 message: 'min 5 characters'
               },
               maxLength: {
@@ -75,7 +75,7 @@ errors, isValid
             {...register('password', {
               required: 'required field',
               minLength: {
-                value: 3,
+                value: 8,
                 message: 'min 8 characters'
               },
               maxLength: {
