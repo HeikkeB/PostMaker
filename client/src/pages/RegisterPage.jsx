@@ -1,51 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { registerUser, checkAuth } from '../redux/features/auth/authSlice'
-import { toast } from 'react-toastify'
-import { useForm } from 'react-hook-form'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { registerUser, checkAuth } from '../redux/features/auth/authSlice';
 
 export default function RegisterPage() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const status = useSelector((state) => state.auth.status)
-  const isAuth = useSelector(checkAuth)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const {register, 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const status = useSelector((state) => state.auth.status);
+  const isAuth = useSelector(checkAuth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    register,
     formState: {
-      errors, isValid, 
-  }, 
-  handleSubmit,
-  reset,
-} = useForm({
-  mode: 'onBlur',
-})
+      errors, isValid,
+    },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: 'onBlur',
+  });
 
   useEffect(() => {
     if (status) {
-      toast(status)
+      toast(status);
     }
     if (isAuth) {
-      navigate('/')
+      navigate('/');
     }
-  }, [status, isAuth, navigate])
+  }, [status, isAuth, navigate]);
 
   const handleSubmitReg = () => {
     try {
-      dispatch(registerUser({ username, password }))
-     reset()
+      dispatch(registerUser({ username, password }));
+      reset();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="w-1/4 h-60 mx-auto mt-40 flex flex-col justify-center items-center">
       <h1 className="titlePage">Registration</h1>
       <form onSubmit={handleSubmit(() => {
-            handleSubmitReg()
-      } )}>
+        handleSubmitReg();
+      })}>
         <section className="mb-5">
           <input
             type="text"
@@ -53,11 +54,11 @@ export default function RegisterPage() {
               required: 'required field',
               minLength: {
                 value: 5,
-                message: 'min 5 characters'
+                message: 'min 5 characters',
               },
               maxLength: {
                 value: 20,
-                message: 'max 20 characters'
+                message: 'max 20 characters',
               },
             })}
             value={username}
@@ -74,12 +75,12 @@ export default function RegisterPage() {
               required: 'required field',
               minLength: {
                 value: 8,
-                message: 'min 8 characters'
+                message: 'min 8 characters',
               },
               maxLength: {
                 value: 20,
-                message: 'max 20 characters'
-              }
+                message: 'max 20 characters',
+              },
             })}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -98,7 +99,7 @@ export default function RegisterPage() {
             CONFIRM
           </button>
           <Link
-            to="/login" 
+            to="/login"
             className="flex justify-center items-center text-xs text-slate-300 hover:text-[#d55f34]"
           >
             have an account?
@@ -106,5 +107,5 @@ export default function RegisterPage() {
         </div>
       </form>
     </div>
-  )
+  );
 }

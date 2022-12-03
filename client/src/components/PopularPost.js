@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 import React from 'react';
 
 export default function PopularPost({ post }) {

@@ -1,34 +1,35 @@
-import { useEffect, useState } from 'react'
-import PostItem from '../components/PostItem'
-import axios from '../utils/axios'
-import { checkAuth } from '../redux/features/auth/authSlice'
-import { useSelector } from 'react-redux'
+/* eslint-disable import/no-unresolved */
+/* eslint-disable semi */
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from '../utils/axios';
+import { checkAuth } from '../redux/features/auth/authSlice';
+import PostItem from '../components/PostItem';
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
-  const isAuth = useSelector(checkAuth)
-  
-  
+  const isAuth = useSelector(checkAuth);
+
   useEffect(() => {
     const fetchMyPosts = async () => {
-      if(isAuth) {
+      if (isAuth) {
         try {
-          const {data} = await axios.get('/posts/user/me')
-          setPosts(data)
+          const { data } = await axios.get('/posts/user/me');
+          setPosts(data);
         } catch (error) {
-          console.log(error)
+          console.log(error);
+        }
       }
-      }
-    }
-    fetchMyPosts()
-  }, [isAuth])
+    };
+    fetchMyPosts();
+  }, [isAuth]);
 
-if(isAuth) {
-  return <div className='w-1/2 mx-auto py-10 flex flex-col gap-4'>
+  if (isAuth) {
+    return <div className='w-1/2 mx-auto py-10 flex flex-col gap-4'>
     {posts?.map((post, index) => (
       <PostItem key={index} post={post} />
     ))}
   </div>
-}
+  }
 }

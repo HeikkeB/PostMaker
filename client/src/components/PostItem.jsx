@@ -1,5 +1,7 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable semi */
 import React from 'react';
-import {AiFillEye, AiOutlineMessage} from 'react-icons/ai';
+import { AiFillEye, AiOutlineMessage } from 'react-icons/ai';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 

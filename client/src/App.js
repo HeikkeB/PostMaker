@@ -1,24 +1,25 @@
-import Layout from './components/Layout'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import MainPage from './pages/MainPage'
-import PostsPage from './pages/PostsPage'
-import PostPage from './pages/PostPage'
-import AddPostPage from './pages/AddPostPage'
-import RegisterPage from './pages/RegisterPage'
-import LoginPage from './pages/LoginPage'
-import EditPostPage from './pages/EditPostPage'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { getMe, checkAuth } from './redux/features/auth/authSlice'
+/* eslint-disable import/no-unresolved */
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getMe, checkAuth } from './redux/features/auth/authSlice';
+import Layout from './components/Layout';
+import MainPage from './pages/MainPage';
+import PostsPage from './pages/PostsPage';
+import PostPage from './pages/PostPage';
+import AddPostPage from './pages/AddPostPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import EditPostPage from './pages/EditPostPage';
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMe())
-  }, [dispatch])
+    dispatch(getMe());
+  }, [dispatch]);
   return (
     <Layout>
       <Routes>
@@ -45,7 +46,7 @@ function App() {
         theme="dark"
       />
     </Layout>
-  )
+  );
 }
 
-export default App
+export default App;

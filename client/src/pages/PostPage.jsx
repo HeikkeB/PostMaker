@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable no-trailing-spaces */
 import { useCallback, useState, useEffect } from 'react';
 import {
   AiFillEye, AiTwotoneEdit, AiFillDelete, AiOutlineMessage,
@@ -54,28 +56,28 @@ export default function PostPage() {
     }
   };
 
-const fetchComments = useCallback( async () => {
+  const fetchComments = useCallback(async () => {
     try {
-      dispatch(getPostComments(params.id))
+      dispatch(getPostComments(params.id));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }, [dispatch, params.id])
+  }, [dispatch, params.id]);
 
-useEffect(() => {
-fetchComments()
-}, [fetchComments])
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]);
 
-  if(!post) {
-    return  <div className='titlePage py-10'>
+  if (!post) {
+    return <div className='titlePage py-10'>
     NO POSTS
   </div>
   }
   return <div className='relative'>
-<button className='absolute top-8 left-10 btnPage'><Link to={'/'}>BACK</Link></button>  
-    <div className='flex justify-center items-center flex-col gap-10 py-8'>    
-      <div className='w-2/3'>        
-        <div className='flex justify-center basis-1/4 flex-grow'>      
+<button className='absolute top-8 left-10 btnPage'><Link to={'/'}>BACK</Link></button>
+    <div className='flex justify-center items-center flex-col gap-10 py-8'>
+      <div className='w-2/3'>
+        <div className='flex justify-center basis-1/4 flex-grow'>
         <div className={
       post?.imgUrl ? 'flex h-full' : 'flex rounded-sm'
     }>{
@@ -92,7 +94,6 @@ fetchComments()
     <div className='text-[#cbd5e1] text-xl px-2 mt-3'>{post.title}</div>
     <p className='text-[#cbd5e1] opacity-90 text-xs pt-5 px-2'>{post.text}</p>
 
-
     <div className='flex gap-3 items-center mt-4 justify-between'>
      <div className='flex gap-3'>
      <button className='flex items-center justify-center gap-2 text-[12px] text-[#cbd5e1] opacity-50'>
@@ -107,17 +108,16 @@ fetchComments()
         <Link to={`/${params.id}/edit`}><AiTwotoneEdit /></Link>
       </button>
       <button onClick={handleRemovePost} className='flex items-center justify-center gap-2 text-[16px] opacity-50'><AiFillDelete /></button>
-     </div> 
+     </div>
   )
 }
-     
     </div>
       </div>
 
       <div className='w-2/3 p-8 flex flex-col gap-4 rounded-lg'>
-      <form className='flex gap-3 mb-5' onSubmit={handleSubmit(()=> {
-        if(comment.length > 0) {
-        handleSubmitCom()
+      <form className='flex gap-3 mb-5' onSubmit={handleSubmit(() => {
+        if (comment.length > 0) {
+          handleSubmitCom();
         }
       })}>
         <textarea
@@ -126,7 +126,7 @@ fetchComments()
             required: 'required field',
           })}
           value={comment}
-          onChange={e => setComment(e.target.value)}
+          onChange={(e) => setComment(e.target.value)}
           placeholder='Comment'
           className='inputPageBig h-20 max-h-24'
         />

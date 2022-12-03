@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Link, NavLink, Routes, Route,

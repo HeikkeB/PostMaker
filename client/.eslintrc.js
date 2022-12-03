@@ -1,7 +1,10 @@
+/* eslint-disable quotes */
+/* eslint-disable quote-props */
+/* eslint-disable indent */
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
     },
   "extends": [
     "airbnb-base",
@@ -15,13 +18,13 @@ module.exports = {
       "ecmaVersion": "latest",
       "ecmaFeatures": {
         "jsx": true,
-        "experimentalObjectRestSpread": true
+        "experimentalObjectRestSpread": true,
       },
-      "requireConfigFile": false
+      "requireConfigFile": false,
     },
     "plugins": [
         "react",
-        "eslint-plugin-import"
+        "eslint-plugin-import",
     ],
     "rules": {
       "react/jsx-uses-vars": "error",
@@ -37,8 +40,8 @@ module.exports = {
                 "_id",
                 "__dirname",
                 "__filename",
-              ]
-            }
+              ],
+            },
           ],
-    }
-}
+    },
+};
