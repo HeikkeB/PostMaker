@@ -68,13 +68,17 @@ export default function PostPage() {
     fetchComments();
   }, [fetchComments]);
 
+  const handleBack = () => {
+    navigate(-1)
+  }
+
   if (!post) {
     return <div className='titlePage py-10'>
     NO POSTS
   </div>
   }
   return <div className='relative'>
-<button className='absolute top-8 left-10 btnPage'><Link to={'/'}>BACK</Link></button>
+<button className='absolute top-8 left-10 btnPage' onClick={handleBack}>BACK</button>
     <div className='flex justify-center items-center flex-col gap-10 py-8'>
       <div className='w-2/3'>
         <div className='flex justify-center basis-1/4 flex-grow'>

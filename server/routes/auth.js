@@ -2,13 +2,13 @@ import { Router } from 'express';
 import { register, login, getMe } from '../controllers/auth.js';
 import { checkAuth } from '../utils/checkAuth.js';
 
-const router = new Router();
+const routerAuth = new Router();
 
 // Register
-router.post('/register', register);
+routerAuth.post('/register', register);
 // Login
-router.post('/login', login);
+routerAuth.post('/login', login);
 // Get Me
-router.get('/me', checkAuth, getMe);
+routerAuth.get('/me', checkAuth, getMe);
 
-export default router;
+export default routerAuth;

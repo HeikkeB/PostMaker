@@ -4,9 +4,10 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
 
-import authRoute from './routes/auth.js';
-import postRoute from './routes/posts.js';
-import commentRoute from './routes/comments.js';
+// import authRoute from './routes/auth.js';
+// import postRoute from './routes/posts.js';
+// import commentRoute from './routes/comments.js';
+import router from './routes/index.js';
 
 const app = express();
 dotenv.config();
@@ -27,9 +28,10 @@ app.use(express.static('uploads'));
 app.use(express.static('build'));
 
 // Routes
-app.use('/auth', authRoute);
-app.use('/posts', postRoute);
-app.use('/comments', commentRoute);
+// app.use('/auth', authRoute);
+// app.use('/posts', postRoute);
+// app.use('/comments', commentRoute);
+app.use(router);
 app.use('/', ((req, res) => {
   res.redirect('/auth/me');
 }));
