@@ -1,8 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PostMaker",
+  "name": "PostMaker",
   "icons": [],
-  "start_url": ".",
+  "start_url": "https://heikkeb.github.io/PostMaker/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
