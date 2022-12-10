@@ -24,15 +24,15 @@ export const register = async (req, res) => {
       password: hash,
     });
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '30d',
-    });
+    // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+    //   expiresIn: '30d',
+    // });
 
     await newUser.save();
 
     res.json({
-      newUser,
-      token,
+      newUser: username,
+      // token,
       message: "Registration it's ok",
     });
   } catch (error) {
@@ -65,7 +65,7 @@ export const login = async (req, res) => {
 
     res.json({
       token,
-      user,
+      user: username,
       message: 'You are logged in',
     });
   } catch (error) {

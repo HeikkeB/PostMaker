@@ -3,20 +3,15 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
-
-// import authRoute from './routes/auth.js';
-// import postRoute from './routes/posts.js';
-// import commentRoute from './routes/comments.js';
+import helmet from 'helmet';
 import router from './routes/index.js';
+import { limiter } from './middleware/limiter.js';
 
 const app = express();
 dotenv.config();
 
 //  Constants
 const PORT = process.env.PORT || 5001;
-// const DB_USER = process.env.DB_USER;
-// const DB_PASSWORD = process.env.DB_PASSWORD;
-// const DB_NAME = process.env.DB_NAME;
 
 const { DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
@@ -26,11 +21,8 @@ app.use(fileUpload());
 app.use(express.json());
 app.use(express.static('uploads'));
 app.use(express.static('build'));
-
-// Routes
-// app.use('/auth', authRoute);
-// app.use('/posts', postRoute);
-// app.use('/comments', commentRoute);
+app.use(helmet());
+app.use(limiter);
 app.use(router);
 app.use('/', ((req, res) => {
   res.redirect('/auth/me');
