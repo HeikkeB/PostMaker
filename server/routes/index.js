@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import routerAuth from './auth.js';
+import { checkAuth } from '../utils/checkAuth.js';
 import routerComment from './comments.js';
 import routerPost from './posts.js';
 
 const router = new Router();
-
-router.use('/auth', routerAuth);
-router.use('/comments', routerComment);
-router.use('/posts', routerPost);
+router.use('/comments', checkAuth, routerComment);
+router.use('/posts', checkAuth, routerPost);
 
 export default router;

@@ -4,8 +4,10 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import helmet from 'helmet';
+import routerAuth from './routes/auth.js';
 import router from './routes/index.js';
 import { limiter } from './middleware/limiter.js';
+import handleErrors from './middleware/handleErrors.js';
 
 const app = express();
 dotenv.config();
@@ -23,10 +25,10 @@ app.use(express.static('uploads'));
 app.use(express.static('build'));
 app.use(helmet());
 app.use(limiter);
+app.use(routerAuth);
 app.use(router);
-app.use('/', ((req, res) => {
-  res.redirect('/auth/me');
-}));
+
+app.use(handleErrors);
 
 async function start() {
   try {
