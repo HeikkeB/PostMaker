@@ -77,9 +77,11 @@ export default function PostPage() {
     NO POSTS
   </div>
   }
-  return <div className='relative'>
-<button className='absolute top-8 left-10 btnPage' onClick={handleBack}>BACK</button>
+  return <div>
     <div className='flex justify-center items-center flex-col gap-10 py-8'>
+    <div className='flex w-full pl-10'>
+<button className='btnPage' onClick={handleBack}>BACK</button>
+    </div>
       <div className='w-2/3'>
         <div className='flex justify-center basis-1/4 flex-grow'>
         <div className={
