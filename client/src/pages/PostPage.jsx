@@ -110,10 +110,10 @@ export default function PostPage() {
      {
   user?._id === post.author && ( 
      <div className='flex gap-3'>
-     <button className='flex items-center justify-center gap-2 text-[16px] opacity-50'>
+     <button className='flex items-center justify-center gap-2 text-[16px] opacity-50 hover:opacity-80'>
         <Link to={`/${params.id}/edit`}><AiTwotoneEdit /></Link>
       </button>
-      <button onClick={handleRemovePost} className='flex items-center justify-center gap-2 text-[16px] opacity-50'><AiFillDelete /></button>
+      <button onClick={handleRemovePost} className='flex items-center justify-center gap-2 text-[16px] opacity-50 hover:opacity-80'><AiFillDelete /></button>
      </div>
   )
 }
