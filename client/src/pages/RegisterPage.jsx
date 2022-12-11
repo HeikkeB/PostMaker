@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { registerUser, checkAuth } from '../redux/features/auth/authSlice';
+import { registerUser } from '../redux/features/auth/authSlice';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [registerOk, setRegisterOk] = useState(false);
   const status = useSelector((state) => state.auth.status);
-  const isAuth = useSelector(checkAuth);
+  // const isAuth = useSelector(checkAuth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -27,14 +28,15 @@ export default function RegisterPage() {
     if (status) {
       toast(status);
     }
-    if (isAuth) {
-      navigate('/');
+    if (registerOk) {
+      navigate('/login');
     }
-  }, [status, isAuth, navigate]);
+  }, [status, registerOk, navigate]);
 
   const handleSubmitReg = () => {
     try {
       dispatch(registerUser({ username, password }));
+      setRegisterOk(true);
       reset();
     } catch (error) {
       console.log(error);
@@ -78,7 +80,7 @@ export default function RegisterPage() {
                 message: 'min 8 characters',
               },
               maxLength: {
-                value: 20,
+                value: 24,
                 message: 'max 20 characters',
               },
             })}

@@ -15,7 +15,7 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async ({ username, password }) => {
     try {
-      const { data } = await axios.post('/auth/register', {
+      const { data } = await axios.post('/register', {
         username,
         password,
       });
@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ username, password }) => {
     try {
-      const { data } = await axios.post('/auth/login', {
+      const { data } = await axios.post('/login', {
         username,
         password,
       });
@@ -49,7 +49,7 @@ export const loginUser = createAsyncThunk(
 
 export const getMe = createAsyncThunk('auth/getMe', async () => {
   try {
-    const { data } = await axios.get('/auth/me');
+    const { data } = await axios.get('/me');
 
     return data;
   } catch (error) {
