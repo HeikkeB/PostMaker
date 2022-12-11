@@ -24,7 +24,11 @@ app.use(fileUpload());
 app.use(express.json());
 app.use(express.static('uploads'));
 app.use(express.static('build'));
-app.use(helmet());
+app.use(helmet(
+  {
+    crossOriginResourcePolicy: false,
+  },
+));
 app.use(limiter);
 app.use(routerAuth);
 app.use(router);
