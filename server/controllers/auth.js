@@ -28,7 +28,7 @@ export const register = async (req, res, next) => {
     if (error.name === 'ValidationError') {
       next(new BadRequest('Incorrect data entered'));
     } else if (error.code === 11000) {
-      next(new Conflict('This name is taken, please select another'));
+      next(new Conflict(`"${req.body.username}" is already taken, please select another username`));
     } else {
       next(error);
     }

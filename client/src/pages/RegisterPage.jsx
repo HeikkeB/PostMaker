@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { registerUser } from '../redux/features/auth/authSlice';
+import { registerUser /* checkAuth */ } from '../redux/features/auth/authSlice';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -31,7 +31,7 @@ export default function RegisterPage() {
     if (registerOk) {
       navigate('/login');
     }
-  }, [status, registerOk, navigate]);
+  }, [status, navigate, registerOk]);
 
   const handleSubmitReg = () => {
     try {
