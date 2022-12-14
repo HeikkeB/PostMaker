@@ -1,9 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/prefer-default-export */
+import BadRequest from '../errors/BadRequest.js';
 import Comment from '../models/Comment.js';
 import Post from '../models/Post.js';
 
-export const createComment = async (req, res) => {
+export const createComment = async (req, res, next) => {
   try {
     const { postId, comment } = req.body;
 
@@ -21,6 +22,8 @@ export const createComment = async (req, res) => {
     }
     res.json(newComment);
   } catch (error) {
-    res.json({ message: 'Something went wrong!' });
+    if (error.name === 'ValidationError' || error.name === 'CastError') {
+      next(new BadRequest('Incorrect data entered'));
+    }
   }
 };
