@@ -21,7 +21,7 @@ export const register = async (req, res, next) => {
     await newUser.save();
 
     res.json({
-      newUser: username,
+      user: username,
       message: "Registration it's ok",
     });
   } catch (error) {
