@@ -1,8 +1,8 @@
-# PostMaker (MERN)
+# PostMaker
 
-This project allows you to create posts on any topic. For example, you are studying programming and want to focus on areas that are important or difficult for you, you can do this with the help of this application.
+This project allows you to create posts on some topic. For example, you are studying programming and want to focus on areas that are important or difficult for you. You can do this with the help of this Application.
 
-## The start of app
+## The start of App
 
 * git clone https://github.com/HeikkeB/PostMaker
 * in the folder `server`
@@ -18,7 +18,7 @@ This project allows you to create posts on any topic. For example, you are study
   - enter in Terminal `npm run build` for production
   - enter in Terminal `npm run lint` for testing
 
-## USED TECHOLOGY
+## USED TECHOLOGY (MERN)
 
 ![https://img.shields.io/badge/-Mongo%20DB-brightgreen](https://img.shields.io/badge/-Mongo%20DB-brightgreen)
 ![https://img.shields.io/badge/-Express-important](https://img.shields.io/badge/-Express-important)
