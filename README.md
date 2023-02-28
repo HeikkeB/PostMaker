@@ -5,7 +5,18 @@ this project allows you to create posts on any topic. For example, you are study
 ## The start of app
 
 * git clone https://github.com/HeikkeB/PostMaker
-* in the folder server enter `npm i`
+* in the folder `server`
+  - enter in Terminal `npm i`
+  - enter in Terminal `npm i -D`
+  - enter in Terminal `npm run dev` for development
+  - enter in Terminal `npm start` for production (but need .env file)
+  - enter in Terminal `npm run lint` for testing
+* in the folder `client`
+  - enter in Terminal `npm i`
+  - enter in Terminal `npm i -D`
+  - enter in Terminal `npm start` for development
+  - enter in Terminal `npm run build` for production
+  - enter in Terminal `npm run lint` for testing
 
 ## USED TECHOLOGY
 
