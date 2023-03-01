@@ -1,6 +1,6 @@
 # PostMaker
 
-This project allows you to create posts on some topic. For example, you are studying programming and want to focus on areas that are important or difficult for you. You can do this with the help of this Application.
+This project allows you to create posts on some topic. For example, you are studying programming and want to focus on areas that are important or difficult for you. You can use this application.
 
 ## The start of App
 
